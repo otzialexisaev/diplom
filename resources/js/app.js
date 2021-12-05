@@ -21,11 +21,17 @@ window.Vue = require('vue').default;
 
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
+import Vuetify from "vuetify";
+import AdminTestCreate from './components/Pages/Admin/Test/Create';
+import 'vuetify/dist/vuetify.css';
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
+Vue.use(Vuetify);
 const routes = [
-
+    {
+        path: '/admin/test/create', component: AdminTestCreate
+    }
 ];
 
 const router = new VueRouter({
@@ -41,5 +47,6 @@ const router = new VueRouter({
 
 const app = new Vue({
     router,
+    vuetify: new Vuetify(),
     template: '<router-view></router-view>'
 }).$mount('#vue');
