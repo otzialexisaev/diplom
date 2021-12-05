@@ -19,15 +19,16 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import Vuetify from "vuetify";
 import AdminTestCreate from './components/Pages/Admin/Test/Create';
 import 'vuetify/dist/vuetify.css';
 
-Vue.use(Vuex);
 Vue.use(VueRouter);
 Vue.use(Vuetify);
+
+import store from './store/main';
+
 const routes = [
     {
         path: '/admin/test/create', component: AdminTestCreate
@@ -47,6 +48,7 @@ const router = new VueRouter({
 
 const app = new Vue({
     router,
+    store,
     vuetify: new Vuetify(),
-    template: '<router-view></router-view>'
+    template: '<v-app><router-view></router-view></v-app>'
 }).$mount('#vue');
