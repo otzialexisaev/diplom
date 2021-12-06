@@ -1,11 +1,14 @@
 import Vuex from 'vuex';
 import Vue from 'vue';
-import ConstStore from './constStore';
 
 Vue.use(Vuex);
 
+import ConstStore from './constStore';
+import AdminTestCreateStore from './admin/test/createStore';
+
 export default new Vuex.Store({
     modules: {
-        const: ConstStore
+        const: ConstStore,
+        adminTestCreate: AdminTestCreateStore
     }
 });
