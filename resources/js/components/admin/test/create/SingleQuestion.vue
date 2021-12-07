@@ -7,7 +7,7 @@
             ></v-text-field>
             <v-btn
                 v-on:click="saveQuestionDesc"
-                v-if="descriptionInput"
+                :disabled="!descriptionInput"
             >Сохранить вопрос
             </v-btn>
         </div>
