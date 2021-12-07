@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import SingleQuestion from "../../../admin/test/create/SingleQuestion";
+import SingleQuestion from "../../../admin/test/create/SingleQuestion/Main";
 import CourseSelect from "../../../CourseSelect";
 import QuestionTypesSelect from "../../../QuestionTypesSelect";
 
