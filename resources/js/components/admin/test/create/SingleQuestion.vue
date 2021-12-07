@@ -1,22 +1,25 @@
 <template>
     <div>
-        <div v-if="this.questionText === ''">
+        <div v-if="this.$props.data.description === ''">
             <v-text-field
                 label="Введите вопрос"
-                v-model="questionInput"
+                v-model="descriptionInput"
             ></v-text-field>
             <v-btn
-                v-on:click="addQuestion"
+                v-on:click="saveQuestionDesc"
+                v-if="descriptionInput"
             >Сохранить вопрос
             </v-btn>
         </div>
         <div v-else>
-            <p>Вопрос {{ this.$props.key+ 1 }}</p>
-            <p>{{ this.questionText }}</p>
+            <p>Вопрос {{ this.$props.index + 1 }}</p>
+            <p>{{ this.$props.data.description }}</p>
             <p>Варианты ответа:</p>
-            <li v-for="choice in choices">
-                {{ choice }}
-            </li>
+            <ul>
+                <li v-for="item in this.$props.data.items">
+                    {{ item }}
+                </li>
+            </ul>
             <v-text-field
                 label="Введите вариант ответа"
                 v-model="choiceText"
@@ -30,25 +33,27 @@
 <script>
 export default {
     name: "SingleQuestion",
-    props: ['count', 'check', 'id'],
+    props: ['data', 'index'],
     data() {
         return {
             choiceText: '',
-            choices: [],
-            questionText: '',
-            questionInput: ''
+            descriptionInput: ''
         }
+    },
+    mounted: function () {
+        window.Vue.set(this.$props.data, 'items', []);
+        window.Vue.set(this.$props.data, 'description', '');
     },
     methods: {
         addChoice: function () {
-            this.$data.choices.push(this.choiceText);
-            this.$data.choiceText = '';
+            this.$props.data.items.push(this.choiceText);
+            this.choiceText = '';
         },
-        addQuestion: function () {
-            this.questionText = this.questionInput
+        saveQuestionDesc: function () {
+            this.$props.data.description = this.descriptionInput;
         },
         deleteSelf: function () {
-            this.$emit('delete');
+            this.$emit('delete', this.$props.index);
         }
     }
 }

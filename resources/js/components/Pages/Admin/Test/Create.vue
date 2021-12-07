@@ -16,9 +16,11 @@
         ></v-select>
         <v-btn :disabled="questionTypeToAdd === null" v-on:click="addQuestion">Добавить вопрос</v-btn>
         <v-divider></v-divider>
-        <div v-for="(question) in this.$store.getters['adminTestCreate/questions']" :key="question.id">
+        <div v-for="(question, index) in questions" :key="question.id">
             <SingleQuestion
-                v-on:delete="deleteQuestion(question.id)" v-if="question.questionType === 1"
+                :index="index"
+                :data="question.data"
+                v-on:delete="deleteQuestion(question.id)" v-if="question.type === 1"
             ></SingleQuestion>
             <v-divider></v-divider>
         </div>
@@ -36,34 +38,19 @@ export default {
     data() {
         return {
             course: null,
-            questionTypeToAdd: null
+            questionTypeToAdd: null,
+            questions: []
         }
     },
     methods: {
         addQuestion() {
-            this.$store.commit("adminTestCreate/addQuestion", {
-                questionType: this.questionTypeToAdd,
-                questionData: {}
+            this.questions.push({
+                type: this.questionTypeToAdd,
+                data: {}
             });
-            // console.log(this.$store.getters["adminTestCreate/id"]);
-            // console.log(this.$store.getters["adminTestCreate/questions"]);
-            // this.$store.commit('adminTestCreate/addQuestion', {
-            //     type: this.questionTypeToAdd,
-            //     data: {
-            //         text: ''
-            //     }
-            // });
-            // this.questions.push({
-            //     type: this.questionTypeToAdd,
-            //     data: {
-            //         check: 'asd'
-            //     }
-            // });
         },
         deleteQuestion(index) {
-            this.$store.commit('adminTestCreate/deleteQuestion', index);
-            console.log('deleting');
-            console.log('index ' + index);
+            this.questions.splice(index, 1);
         }
     }
 }
