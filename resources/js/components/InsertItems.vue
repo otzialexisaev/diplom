@@ -29,9 +29,9 @@ export default {
     computed: {
         fullLabel: function () {
             if (this.$props.labelAddition) {
-                return 'Вопрос ' + this.$props.index + 1 + ' ' + this.$props.labelAddition
+                return 'Вопрос ' + (this.$props.index + 1) + ' ' + this.$props.labelAddition
             } else {
-                return 'Вопрос ' + this.$props.index + 1
+                return `Вопрос ` + (this.$props.index + 1)
             }
         }
     }
