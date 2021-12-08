@@ -24,6 +24,7 @@ window.Vue = require('vue').default;
 import VueRouter from 'vue-router';
 import Vuetify from "vuetify";
 import AdminTestCreate from './components/Pages/Admin/Test/Create';
+import Layout from './components/layouts/Main';
 import 'vuetify/dist/vuetify.css';
 
 Vue.use(VueRouter);
@@ -52,5 +53,6 @@ const app = new Vue({
     router,
     store,
     vuetify: new Vuetify(),
-    template: '<v-app><router-view></router-view></v-app>'
+    components: {Layout},
+    template: '<v-app><Layout></Layout></v-app>'
 }).$mount('#vue');

@@ -4,20 +4,20 @@
         <QuestionTypesSelect v-model="questionTypeToAdd"></QuestionTypesSelect>
         <v-btn :disabled="questionTypeToAdd === null" v-on:click="addQuestion">Добавить вопрос</v-btn>
         <v-divider></v-divider>
-        <div v-for="(question, index) in questions" :key="question.id">
+        <div v-for="(question, index) in questions">
             <SingleQuestion
                 v-if="question.type === 1"
                 :index="index" :data="question.data"
                 @update="updateQuestionData($event, index)"
-                @delete="deleteQuestion(question.id)"
+                @delete="deleteQuestion(index)"
             ></SingleQuestion>
-            <v-divider></v-divider>
         </div>
     </div>
 </template>
 
 <script>
 import SingleQuestion from "../../../admin/test/create/SingleQuestion/Main";
+import MultipleQuestion from "../../../admin/test/create/MultipleQuestion/Main";
 import CourseSelect from "../../../CourseSelect";
 import QuestionTypesSelect from "../../../QuestionTypesSelect";
 
@@ -25,6 +25,7 @@ export default {
     name: "Create",
     components: {
         SingleQuestion,
+        MultipleQuestion,
         CourseSelect,
         QuestionTypesSelect
     },

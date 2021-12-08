@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mb-5">
         <v-text-field
             label="Введите вопрос"
             @input="$emit('input', $event);"
