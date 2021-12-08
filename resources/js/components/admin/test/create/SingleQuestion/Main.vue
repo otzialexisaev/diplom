@@ -1,7 +1,7 @@
 <template>
     <div>
         <InsertQuestion v-if="this.$props.data.description === ''" :disabled="!descriptionInput"
-                        v-model="descriptionInput" @click="saveQuestionDesc"></InsertQuestion>
+                        v-model="descriptionInput" @click="updateData"></InsertQuestion>
         <InsertItems v-else :index="this.$props.index" @addChoice="addChoice" :data="this.$props.data"
                      v-model="choiceText" :choiceText="choiceText"></InsertItems>
         <v-btn v-on:click="deleteSelf">Удалить</v-btn>
@@ -15,27 +15,39 @@ import InsertItems from "./InsertItems";
 export default {
     name: "SingleQuestion",
     components: {InsertQuestion, InsertItems},
-    props: ['data', 'index'],
+    props: {
+        data: {
+            type: Object,
+            default: function () {
+                return {
+                    items: [],
+                    description: ''
+                }
+            }
+        },
+        index: Number
+    },
     data() {
         return {
             choiceText: '',
-            descriptionInput: ''
+            descriptionInput: '',
+            items: this.$props.data.items
         }
-    },
-    mounted: function () {
-        window.Vue.set(this.$props.data, 'items', []);
-        window.Vue.set(this.$props.data, 'description', '');
     },
     methods: {
         addChoice: function () {
-            this.$props.data.items.push(this.choiceText);
+            this.$data.items.push(this.choiceText);
             this.choiceText = '';
-        },
-        saveQuestionDesc: function () {
-            this.$props.data.description = this.descriptionInput;
+            this.updateData();
         },
         deleteSelf: function () {
-            this.$emit('delete', this.$props.index);
+            this.$emit('delete');
+        },
+        updateData: function () {
+            this.$emit('update', {
+                items: this.$data.items,
+                description: this.$data.descriptionInput
+            });
         }
     }
 }

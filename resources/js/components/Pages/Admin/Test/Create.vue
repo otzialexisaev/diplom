@@ -6,9 +6,10 @@
         <v-divider></v-divider>
         <div v-for="(question, index) in questions" :key="question.id">
             <SingleQuestion
-                :index="index"
-                :data="question.data"
-                v-on:delete="deleteQuestion(question.id)" v-if="question.type === 1"
+                v-if="question.type === 1"
+                :index="index" :data="question.data"
+                @update="updateQuestionData($event, index)"
+                @delete="deleteQuestion(question.id)"
             ></SingleQuestion>
             <v-divider></v-divider>
         </div>
@@ -38,11 +39,13 @@ export default {
         addQuestion() {
             this.questions.push({
                 type: this.questionTypeToAdd,
-                data: {}
             });
         },
         deleteQuestion(index) {
             this.questions.splice(index, 1);
+        },
+        updateQuestionData(data, index) {
+            window.Vue.set(this.questions[index], 'data', data);
         }
     }
 }
