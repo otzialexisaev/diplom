@@ -7,7 +7,6 @@
                      v-model="choiceText" :choiceText="choiceText"
         >
             <v-select
-                multiple
                 v-if="this.selectItems.length > 0"
                 label="Выберите правильный ответ"
                 :items="this.selectItems"
@@ -20,8 +19,8 @@
 </template>
 
 <script>
-import InsertQuestion from "./../SingleQuestion/InsertQuestion";
-import InsertItems from "./../SingleQuestion/InsertItems";
+import InsertQuestion from "@/components/InsertQuestion";
+import InsertItems from "@/components/InsertItems";
 
 export default {
     name: "SingleQuestion",

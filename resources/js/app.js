@@ -23,8 +23,8 @@ window.Vue = require('vue').default;
 
 import VueRouter from 'vue-router';
 import Vuetify from "vuetify";
-import AdminTestCreate from './components/Pages/Admin/Test/Create';
-import Layout from './components/layouts/Main';
+import AdminTestCreate from './pages/Admin/Test/Create';
+import Layout from './layouts/Main';
 import 'vuetify/dist/vuetify.css';
 
 Vue.use(VueRouter);

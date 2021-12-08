@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import SingleQuestion from "../../../admin/test/create/SingleQuestion/Main";
-import MultipleQuestion from "../../../admin/test/create/MultipleQuestion/Main";
-import CourseSelect from "../../../CourseSelect";
-import QuestionTypesSelect from "../../../QuestionTypesSelect";
+import SingleQuestion from "@/components/compound/SingleQuestion";
+import MultipleQuestion from "@/components/compound/MultipleQuestion";
+import CourseSelect from "@/components/CourseSelect";
+import QuestionTypesSelect from "@/components/QuestionTypesSelect";
 
 export default {
     name: "Create",
