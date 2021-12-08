@@ -1,16 +1,20 @@
 <template>
-    <v-card class="pa-5 my-5" elevation="15">
+    <v-card elevation="15" >
         <InsertQuestion v-if="this.$data.description === ''"
-                        v-model="descriptionInput" @click="() => {this.$data.description = this.$data.descriptionInput; this.updateData()}"></InsertQuestion>
+                        v-model="descriptionInput"
+                        @click="() => {this.$data.description = this.$data.descriptionInput; this.updateData()}"></InsertQuestion>
         <InsertItems v-else class="mb-5" :index="this.$props.index" @addChoice="addChoice" :data="this.$props.data"
-                     v-model="choiceText" :choiceText="choiceText"></InsertItems>
-        <v-select
-            label="Выберите правильный ответ"
-            :items="this.selectItems"
-            :value="correctAnswer"
-            @change="(value) => {this.correctAnswer = value; this.updateData()}"
-        ></v-select>
-        <v-btn v-on:click="deleteSelf">Удалить</v-btn>
+                     v-model="choiceText" :choiceText="choiceText"
+        >
+            <v-select
+                v-if="this.selectItems.length > 0"
+                label="Выберите правильный ответ"
+                :items="this.selectItems"
+                :value="correctAnswer"
+                @change="(value) => {this.correctAnswer = value; this.updateData()}"
+            ></v-select>
+            <v-btn v-on:click="deleteSelf">Удалить</v-btn>
+        </InsertItems>
     </v-card>
 </template>
 

@@ -14,10 +14,11 @@
                 :value="this.$props.choiceText"
                 @input="$emit('input', $event);"
             ></v-text-field>
+            <v-btn v-on:click="$emit('addChoice', $event)" :disabled="this.$props.choiceText === ''">Добавить вариант
+                ответа
+            </v-btn>
+            <slot></slot>
         </v-card-text>
-        <v-btn v-on:click="$emit('addChoice', $event)" :disabled="this.$props.choiceText === ''">Добавить вариант
-            ответа
-        </v-btn>
     </div>
 </template>
 

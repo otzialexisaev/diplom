@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-5">
+    <v-card-text>
         <v-text-field
             label="Введите вопрос"
             @input="$emit('input', $event);"
@@ -9,7 +9,7 @@
             :disabled="this.$props.disabled"
         >Сохранить вопрос
         </v-btn>
-    </div>
+    </v-card-text>
 </template>
 
 <script>
