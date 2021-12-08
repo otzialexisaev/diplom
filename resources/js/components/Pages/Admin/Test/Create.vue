@@ -11,6 +11,12 @@
                 @update="updateQuestionData($event, index)"
                 @delete="deleteQuestion(index)"
             ></SingleQuestion>
+            <MultipleQuestion
+                v-else-if="question.type === 2"
+                :index="index" :data="question.data"
+                @update="updateQuestionData($event, index)"
+                @delete="deleteQuestion(index)"
+            ></MultipleQuestion>
         </div>
     </div>
 </template>
@@ -34,6 +40,20 @@ export default {
             course: null,
             questionTypeToAdd: null,
             questions: []
+            // questions: [
+            //     {
+            //         type: 2,
+            //         data: {
+            //             description: 'check multiple?',
+            //             items: [
+            //                 'choice 1',
+            //                 'choice 2',
+            //                 'choice 3'
+            //             ],
+            //             correctAnswer: [0, 2]
+            //         }
+            //     }
+            // ]
         }
     },
     methods: {
