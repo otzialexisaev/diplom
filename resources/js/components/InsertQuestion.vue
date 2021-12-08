@@ -1,7 +1,7 @@
 <template>
     <v-card-text>
         <v-text-field
-            label="Введите вопрос"
+            :label="fullLabel"
             @input="$emit('input', $event);"
         ></v-text-field>
         <v-btn
@@ -15,7 +15,16 @@
 <script>
 export default {
     name: "InsertQuestion",
-    props: ['disabled']
+    props: ['disabled', 'labelAddition'],
+    computed: {
+        fullLabel: function () {
+            if (this.$props.labelAddition) {
+                return 'Введите вопрос ' + this.$props.labelAddition
+            } else {
+                return 'Введите вопрос'
+            }
+        }
+    }
 }
 </script>
 

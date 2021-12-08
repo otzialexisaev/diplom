@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card-title>{{ this.$props.data.description }}</v-card-title>
-        <v-card-subtitle>Вопрос {{ this.$props.index + 1 }}</v-card-subtitle>
+        <v-card-subtitle>{{ fullLabel }}</v-card-subtitle>
         <v-card-text>
             <p>Варианты ответа:</p>
             <ul>
@@ -25,7 +25,16 @@
 <script>
 export default {
     name: "InsertItems",
-    props: ['index', 'data', 'choiceText']
+    props: ['index', 'data', 'choiceText', 'labelAddition'],
+    computed: {
+        fullLabel: function () {
+            if (this.$props.labelAddition) {
+                return 'Вопрос ' + this.$props.index + 1 + ' ' + this.$props.labelAddition
+            } else {
+                return 'Вопрос ' + this.$props.index + 1
+            }
+        }
+    }
 }
 </script>
 

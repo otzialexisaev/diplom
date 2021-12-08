@@ -2,9 +2,10 @@
     <v-card elevation="15" >
         <InsertQuestion v-if="this.$data.description === ''"
                         v-model="descriptionInput"
+                        :labelAddition="labelAddition"
                         @click="() => {this.$data.description = this.$data.descriptionInput; this.updateData()}"></InsertQuestion>
         <InsertItems v-else class="mb-5" :index="this.$props.index" @addChoice="addChoice" :data="this.$props.data"
-                     v-model="choiceText" :choiceText="choiceText"
+                     v-model="choiceText" :choiceText="choiceText" :labelAddition="labelAddition"
         >
             <v-select
                 multiple
@@ -54,7 +55,8 @@ export default {
             descriptionInput: '',
             description: this.$props.data.description,
             correctAnswer: this.$props.data.correctAnswer,
-            items: this.$props.data.items
+            items: this.$props.data.items,
+            labelAddition: ' (несколько вариантов ответа)'
         }
     },
     methods: {

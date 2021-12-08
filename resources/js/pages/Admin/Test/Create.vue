@@ -1,10 +1,7 @@
 <template>
     <div>
         <CourseSelect v-model="course"></CourseSelect>
-        <QuestionTypesSelect v-model="questionTypeToAdd"></QuestionTypesSelect>
-        <v-btn :disabled="questionTypeToAdd === null" v-on:click="addQuestion">Добавить вопрос</v-btn>
-        <v-divider></v-divider>
-        <div v-for="(question, index) in questions">
+        <div v-for="(question, index) in questions" class="mb-10">
             <SingleQuestion
                 v-if="question.type === 1"
                 :index="index" :data="question.data"
@@ -18,6 +15,9 @@
                 @delete="deleteQuestion(index)"
             ></MultipleQuestion>
         </div>
+        <v-divider></v-divider>
+        <QuestionTypesSelect v-model="questionTypeToAdd"></QuestionTypesSelect>
+        <v-btn :disabled="questionTypeToAdd === null" v-on:click="addQuestion">Добавить вопрос</v-btn>
     </div>
 </template>
 
