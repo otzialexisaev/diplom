@@ -1,5 +1,5 @@
 <template>
-    <v-card elevation="15" >
+    <v-card elevation="15">
         <InsertQuestion v-if="this.$data.description === ''"
                         :labelAddition="labelAddition"
                         v-model="descriptionInput"
