@@ -14,12 +14,14 @@
                 :index="index" :data="question.data"
                 @update="updateQuestionData($event, index)"
                 @delete="deleteQuestion(index)"
+                @subjectInput="addSubjectToQuestion($event, index)"
             ></SingleQuestion>
             <MultipleQuestion
                 v-else-if="question.type === 2"
                 :index="index" :data="question.data"
                 @update="updateQuestionData($event, index)"
                 @delete="deleteQuestion(index)"
+                @subjectInput="addSubjectToQuestion($event, index)"
             ></MultipleQuestion>
         </div>
         <v-divider></v-divider>
@@ -79,6 +81,9 @@ export default {
         },
         updateQuestionData(data, index) {
             window.Vue.set(this.questions[index], 'data', data);
+        },
+        addSubjectToQuestion(data, index) {
+            window.Vue.set(this.questions[index], 'subject', data);
         },
         save() {
             this.loading = true;

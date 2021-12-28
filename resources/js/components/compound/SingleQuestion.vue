@@ -15,6 +15,7 @@
                 @change="(value) => {this.correctAnswer = value; this.updateData()}"
             ></v-select>
             <v-btn v-on:click="deleteSelf">Удалить</v-btn>
+            <SubjectSelect @input="$emit('subjectInput', $event)"></SubjectSelect>
         </InsertItems>
     </v-card>
 </template>
@@ -22,10 +23,11 @@
 <script>
 import InsertQuestion from "@/components/InsertQuestion";
 import InsertItems from "@/components/InsertItems";
+import SubjectSelect from "@/components/SubjectSelect";
 
 export default {
     name: "SingleQuestion",
-    components: {InsertQuestion, InsertItems},
+    components: {InsertQuestion, InsertItems, SubjectSelect},
     props: {
         data: {
             type: Object,

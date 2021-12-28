@@ -23,6 +23,10 @@ export default {
                 {text: '20ИСТв1', id: 3},
                 {text: '20ИСТв2', id: 4}
             ]
-        }
+        },
+        subjects: [
+            {id: 1, text: 'first'},
+            {id: 2, text: 'second'}
+        ]
     }
 }
