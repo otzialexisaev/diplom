@@ -25,7 +25,8 @@ class MaterialRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string'],
-            'file' => ['required', 'file']
+            'file' => ['required', 'file'],
+            'subject_id' => ['required', 'integer'],
         ];
     }
 }

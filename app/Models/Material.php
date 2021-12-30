@@ -10,6 +10,7 @@ use Illuminate\Support\Carbon;
  *
  * @property string title
  * @property string path
+ * @property integer subject_id
  * @property Carbon created_at
  * @property Carbon updated_at
  */
