@@ -24,6 +24,7 @@ window.Vue = require('vue').default;
 import VueRouter from 'vue-router';
 import Vuetify from "vuetify";
 import AdminTestCreate from './pages/Admin/Test/Create';
+import AdminMaterialCreate from './pages/Admin/Material/Create';
 import Layout from './layouts/Main';
 import 'vuetify/dist/vuetify.css';
 
@@ -35,6 +36,9 @@ import store from './store/main';
 const routes = [
     {
         path: '/admin/test/create', component: AdminTestCreate
+    },
+    {
+        path: '/admin/material/create', component: AdminMaterialCreate
     }
 ];
 

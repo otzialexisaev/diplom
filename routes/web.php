@@ -23,8 +23,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function() {
     Route::get('test/create', [\App\Http\Controllers\Admin\TestsController::class, 'testCreate']);
+    Route::get('material/create', [\App\Http\Controllers\Admin\MaterialsController::class, 'create']);
 });
 
 Route::prefix('/api')->group(function() {
     Route::post('/admin/test/store', [\App\Http\Controllers\Api\TestsController::class, 'store']);
+    Route::post('/admin/materials/store', [\App\Http\Controllers\Api\MaterialsController::class, 'store']);
 });
