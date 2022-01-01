@@ -16,9 +16,9 @@
                 @change="(value) => {this.correctAnswer = value; this.updateData()}"
             ></v-select>
             <v-btn v-on:click="deleteSelf">Удалить</v-btn>
-            <SubjectSelect class="mt-5" @input="$emit('subjectInput', $event)"></SubjectSelect>
+            <SubjectSelect class="mt-5" @input="subject_id = $event; updateData()"></SubjectSelect>
             <MaterialSelect @input="$emit('materialInput', $event)"
-                            :subject_id="this.$props.subject_id"></MaterialSelect>
+                            :subject_id="this.$props.data.subject_id"></MaterialSelect>
         </InsertItems>
     </v-card>
 </template>
@@ -30,7 +30,7 @@ import SubjectSelect from "@/components/SubjectSelect";
 import MaterialSelect from "@/components/MaterialSelect";
 
 export default {
-    name: "SingleQuestion",
+    name: "MultipleQuestion",
     components: {InsertQuestion, InsertItems, SubjectSelect, MaterialSelect},
     props: {
         data: {
@@ -39,12 +39,11 @@ export default {
                 return {
                     items: [],
                     description: '',
-                    correctAnswer: null
+                    correctAnswer: null,
+                    // todo to make this work with value, pass value to subject select
+                    subject_id: null
                 }
             }
-        },
-        subject_id: {
-            default: null
         },
         index: Number
     },
@@ -64,7 +63,8 @@ export default {
             description: this.$props.data.description,
             correctAnswer: this.$props.data.correctAnswer,
             items: this.$props.data.items,
-            labelAddition: ' (несколько вариантов ответа)'
+            labelAddition: ' (несколько вариантов ответа)',
+            subject_id: this.$props.data.subject_id
         }
     },
     methods: {
@@ -89,6 +89,7 @@ export default {
         updateData: function () {
             this.$emit('update', {
                 items: this.$data.items,
+                subject_id: this.subject_id,
                 description: this.$data.description,
                 correctAnswer: this.correctAnswer
             });

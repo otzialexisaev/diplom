@@ -3,7 +3,8 @@
         @change="$emit('input', $event)"
         :items="this.$store.state.const.courses"
         label="Курс"
-        :value="value"
+        :value="valueData"
+        dense
     ></v-select>
 </template>
 
@@ -13,7 +14,7 @@ export default {
     props: ['value'],
     data() {
         return {
-            value: this.$props.value
+            valueData: this.$props.value
         }
     }
 }

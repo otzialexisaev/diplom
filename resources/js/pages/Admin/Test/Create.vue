@@ -8,21 +8,20 @@
         </v-overlay>
         <CourseSelect v-model="course_id"></CourseSelect>
         <GroupSelect v-if="course_id" v-bind:course_id="course_id" v-model="group_id"></GroupSelect>
+        <v-text-field dense v-model="title" label="Введите наименование теста"></v-text-field>
         <div v-for="(question, index) in questions" class="mb-10">
             <SingleQuestion
                 v-if="question.type === 1"
-                :index="index" :data="question.data" :subject_id="question.subject"
+                :index="index" :data="question.data"
                 @update="updateQuestionData($event, index)"
                 @delete="deleteQuestion(index)"
-                @subjectInput="addSubjectToQuestion($event, index)"
                 @materialInput="addMaterialToQuestion($event, index)"
             ></SingleQuestion>
             <MultipleQuestion
                 v-else-if="question.type === 2"
-                :index="index" :data="question.data" :subject_id="question.subject"
+                :index="index" :data="question.data"
                 @update="updateQuestionData($event, index)"
                 @delete="deleteQuestion(index)"
-                @subjectInput="addSubjectToQuestion($event, index)"
                 @materialInput="addMaterialToQuestion($event, index)"
             ></MultipleQuestion>
         </div>
@@ -54,37 +53,39 @@ export default {
             loading: false,
             // course_id: null,
             // group_id: null,
+            // title: null,
             questionTypeToAdd: null,
-            // questions: []
+            questions: [],
             //////////// TESTING DATA ////////////
             course_id: 2,
             group_id: 3,
-            questions: [
-                {
-                    type: 1,
-                    data: {
-                        description: 'check single?',
-                        items: [
-                            'choice 1',
-                            'choice 2',
-                            'choice 3'
-                        ],
-                        correctAnswer: 0
-                    }
-                },
-                {
-                    type: 2,
-                    data: {
-                        description: 'check multiple?',
-                        items: [
-                            'choice 2.1',
-                            'choice 2.2',
-                            'choice 2.3'
-                        ],
-                        correctAnswer: [0, 2]
-                    }
-                }
-            ]
+            title: 'Check title',
+            // questions: [
+            //     {
+            //         type: 1,
+            //         data: {
+            //             description: 'check single?',
+            //             items: [
+            //                 'choice 1',
+            //                 'choice 2',
+            //                 'choice 3'
+            //             ],
+            //             correctAnswer: 0
+            //         }
+            //     },
+            //     {
+            //         type: 2,
+            //         data: {
+            //             description: 'check multiple?',
+            //             items: [
+            //                 'choice 2.1',
+            //                 'choice 2.2',
+            //                 'choice 2.3'
+            //             ],
+            //             correctAnswer: [0, 2]
+            //         }
+            //     }
+            // ]
         }
     },
     mounted() {
@@ -102,9 +103,6 @@ export default {
         },
         updateQuestionData(data, index) {
             window.Vue.set(this.questions[index], 'data', data);
-        },
-        addSubjectToQuestion(data, index) {
-            window.Vue.set(this.questions[index], 'subject', data);
         },
         addMaterialToQuestion(data, index) {
             window.Vue.set(this.questions[index], 'material', data);

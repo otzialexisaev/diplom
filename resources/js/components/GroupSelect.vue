@@ -6,6 +6,7 @@
         item-value="id"
         label="Группа"
         :value="this.$attrs.value"
+        dense
     ></v-select>
 </template>
 
