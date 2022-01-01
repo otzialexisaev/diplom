@@ -5,16 +5,17 @@
         item-text="text"
         item-value="id"
         label="Группа"
+        :value="this.$attrs.value"
     ></v-select>
 </template>
 
 <script>
 export default {
     name: "GroupSelect",
-    props: ['course'],
+    props: ['course_id'],
     computed: {
         groups: function () {
-            return this.$store.state.const.groups[this.$props.course];
+            return this.$store.state.const.groups[this.$props.course_id];
         }
     }
 }

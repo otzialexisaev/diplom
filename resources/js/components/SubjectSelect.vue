@@ -1,5 +1,6 @@
 <template>
     <v-select
+        dense
         @change="$emit('input', $event)"
         :items="subjects"
         item-text="text"

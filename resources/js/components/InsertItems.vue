@@ -10,6 +10,7 @@
                 </li>
             </ul>
             <v-text-field
+                dense
                 label="Введите вариант ответа"
                 :value="this.$props.choiceText"
                 @input="$emit('input', $event);"

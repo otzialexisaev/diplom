@@ -27,6 +27,16 @@ export default {
         subjects: [
             {id: 1, text: 'first'},
             {id: 2, text: 'second'}
-        ]
+        ],
+        materials: {
+            1: [
+                {title: 'Material 1', id: 1},
+                {title: 'Material 2', id: 2}
+            ],
+            2: [
+                {title: 'Material 3', id: 3},
+                {title: 'Material 4', id: 4}
+            ]
+        }
     }
 }

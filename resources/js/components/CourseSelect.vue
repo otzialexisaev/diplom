@@ -2,15 +2,20 @@
     <v-select
         @change="$emit('input', $event)"
         :items="this.$store.state.const.courses"
-        item-text="text"
-        item-value="value"
         label="Курс"
+        :value="value"
     ></v-select>
 </template>
 
 <script>
 export default {
     name: "CourseSelect",
+    props: ['value'],
+    data() {
+        return {
+            value: this.$props.value
+        }
+    }
 }
 </script>
 

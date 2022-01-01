@@ -6,22 +6,24 @@
                 color="primary">
             </v-progress-circular>
         </v-overlay>
-        <CourseSelect v-model="course"></CourseSelect>
-        <GroupSelect v-if="course" v-bind:course="course" v-model="group"></GroupSelect>
+        <CourseSelect v-model="course_id"></CourseSelect>
+        <GroupSelect v-if="course_id" v-bind:course_id="course_id" v-model="group_id"></GroupSelect>
         <div v-for="(question, index) in questions" class="mb-10">
             <SingleQuestion
                 v-if="question.type === 1"
-                :index="index" :data="question.data"
+                :index="index" :data="question.data" :subject_id="question.subject"
                 @update="updateQuestionData($event, index)"
                 @delete="deleteQuestion(index)"
                 @subjectInput="addSubjectToQuestion($event, index)"
+                @materialInput="addMaterialToQuestion($event, index)"
             ></SingleQuestion>
             <MultipleQuestion
                 v-else-if="question.type === 2"
-                :index="index" :data="question.data"
+                :index="index" :data="question.data" :subject_id="question.subject"
                 @update="updateQuestionData($event, index)"
                 @delete="deleteQuestion(index)"
                 @subjectInput="addSubjectToQuestion($event, index)"
+                @materialInput="addMaterialToQuestion($event, index)"
             ></MultipleQuestion>
         </div>
         <v-divider></v-divider>
@@ -50,25 +52,44 @@ export default {
     data() {
         return {
             loading: false,
-            course: null,
-            group: null,
+            // course_id: null,
+            // group_id: null,
             questionTypeToAdd: null,
-            questions: []
-            // questions: [
-            //     {
-            //         type: 2,
-            //         data: {
-            //             description: 'check multiple?',
-            //             items: [
-            //                 'choice 1',
-            //                 'choice 2',
-            //                 'choice 3'
-            //             ],
-            //             correctAnswer: [0, 2]
-            //         }
-            //     }
-            // ]
+            // questions: []
+            //////////// TESTING DATA ////////////
+            course_id: 2,
+            group_id: 3,
+            questions: [
+                {
+                    type: 1,
+                    data: {
+                        description: 'check single?',
+                        items: [
+                            'choice 1',
+                            'choice 2',
+                            'choice 3'
+                        ],
+                        correctAnswer: 0
+                    }
+                },
+                {
+                    type: 2,
+                    data: {
+                        description: 'check multiple?',
+                        items: [
+                            'choice 2.1',
+                            'choice 2.2',
+                            'choice 2.3'
+                        ],
+                        correctAnswer: [0, 2]
+                    }
+                }
+            ]
         }
+    },
+    mounted() {
+        console.log('main page');
+        // this.course_id = 1;
     },
     methods: {
         addQuestion() {
@@ -84,6 +105,9 @@ export default {
         },
         addSubjectToQuestion(data, index) {
             window.Vue.set(this.questions[index], 'subject', data);
+        },
+        addMaterialToQuestion(data, index) {
+            window.Vue.set(this.questions[index], 'material', data);
         },
         save() {
             this.loading = true;

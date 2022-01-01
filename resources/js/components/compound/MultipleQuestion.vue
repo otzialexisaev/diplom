@@ -1,5 +1,5 @@
 <template>
-    <v-card elevation="15" >
+    <v-card elevation="15">
         <InsertQuestion v-if="this.$data.description === ''"
                         v-model="descriptionInput"
                         :labelAddition="labelAddition"
@@ -16,7 +16,9 @@
                 @change="(value) => {this.correctAnswer = value; this.updateData()}"
             ></v-select>
             <v-btn v-on:click="deleteSelf">Удалить</v-btn>
-            <SubjectSelect @input="$emit('subjectInput', $event)"></SubjectSelect>
+            <SubjectSelect class="mt-5" @input="$emit('subjectInput', $event)"></SubjectSelect>
+            <MaterialSelect @input="$emit('materialInput', $event)"
+                            :subject_id="this.$props.subject_id"></MaterialSelect>
         </InsertItems>
     </v-card>
 </template>
@@ -25,10 +27,11 @@
 import InsertQuestion from "@/components/InsertQuestion";
 import InsertItems from "@/components/InsertItems";
 import SubjectSelect from "@/components/SubjectSelect";
+import MaterialSelect from "@/components/MaterialSelect";
 
 export default {
     name: "SingleQuestion",
-    components: {InsertQuestion, InsertItems, SubjectSelect},
+    components: {InsertQuestion, InsertItems, SubjectSelect, MaterialSelect},
     props: {
         data: {
             type: Object,
@@ -39,6 +42,9 @@ export default {
                     correctAnswer: null
                 }
             }
+        },
+        subject_id: {
+            default: null
         },
         index: Number
     },
