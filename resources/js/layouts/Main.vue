@@ -1,6 +1,30 @@
 <template>
     <v-container fluid id="main-layout">
-        <router-view></router-view>
+        <v-navigation-drawer
+            permanent
+            left
+            app
+        >
+            <v-list>
+                <v-list-item to="/admin/test/create">
+                    <v-list-item-content>
+                        <v-list-item-title>
+                            Создание теста
+                        </v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+                <v-list-item to="/admin/material/create">
+                    <v-list-item-content>
+                        <v-list-item-title>
+                            Добавление материала
+                        </v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+        </v-navigation-drawer>
+        <v-main>
+            <router-view></router-view>
+        </v-main>
     </v-container>
 </template>
 
