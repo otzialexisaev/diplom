@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-overlay :value="loading"></v-overlay>
-        <v-text-field v-model="title"></v-text-field>
+        <v-text-field v-model="title" label="Наименование"></v-text-field>
         <SubjectSelect v-model="subject"></SubjectSelect>
         <v-file-input @change="addFile"></v-file-input>
         <v-btn @click="send">Сохранить</v-btn>

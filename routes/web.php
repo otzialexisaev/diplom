@@ -22,11 +22,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function() {
-    Route::get('test/create', [\App\Http\Controllers\Admin\TestsController::class, 'testCreate']);
+    Route::get('test/create', [\App\Http\Controllers\Admin\TestsController::class, 'create']);
     Route::get('material/create', [\App\Http\Controllers\Admin\MaterialsController::class, 'create']);
+    Route::get('subject/create', [\App\Http\Controllers\Admin\SubjectsController::class, 'create']);
 });
 
 Route::prefix('/api')->group(function() {
     Route::post('/admin/test/store', [\App\Http\Controllers\Api\TestsController::class, 'store']);
     Route::post('/admin/materials/store', [\App\Http\Controllers\Api\MaterialsController::class, 'store']);
+    Route::post('/admin/subject/store', [\App\Http\Controllers\Api\SubjectsController::class, 'store']);
 });
