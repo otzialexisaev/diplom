@@ -25,6 +25,7 @@ import VueRouter from 'vue-router';
 import Vuetify from "vuetify";
 import AdminTestCreate from './pages/Admin/Test/Create';
 import AdminMaterialCreate from './pages/Admin/Material/Create';
+import NotFound from './pages/NotFound';
 import AdminSubjectCreate from './pages/Admin/Subject/Create';
 import Layout from './layouts/Main';
 import 'vuetify/dist/vuetify.css';
@@ -43,6 +44,9 @@ const routes = [
     },
     {
         path: '/admin/subject/create', component: AdminSubjectCreate
+    },
+    {
+        path: '*', component: NotFound
     }
 ];
 

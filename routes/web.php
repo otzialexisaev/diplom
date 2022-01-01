@@ -22,9 +22,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function() {
-    Route::get('test/create', [\App\Http\Controllers\Admin\TestsController::class, 'create']);
-    Route::get('material/create', [\App\Http\Controllers\Admin\MaterialsController::class, 'create']);
-    Route::get('subject/create', [\App\Http\Controllers\Admin\SubjectsController::class, 'create']);
+    Route::fallback(function() {
+        return view('layouts.onlyVue');
+    });
 });
 
 Route::prefix('/api')->group(function() {
