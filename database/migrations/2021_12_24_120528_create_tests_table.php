@@ -16,6 +16,8 @@ class CreateTestsTable extends Migration
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('group_id');
+            $table->string('title')->nullable(false);
+            $table->json('questions')->nullable(false);
             $table->timestamps();
         });
     }
