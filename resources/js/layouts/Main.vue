@@ -6,6 +6,13 @@
             app
         >
             <v-list>
+                <v-list-item href="/admin/test/index">
+                    <v-list-item-content>
+                        <v-list-item-title>
+                            Все тесты
+                        </v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
                 <v-list-item href="/admin/test/create">
                     <v-list-item-content>
                         <v-list-item-title>

@@ -28,6 +28,7 @@ import AdminMaterialCreate from './pages/Admin/Material/Create';
 import NotFound from './pages/NotFound';
 import AdminSubjectCreate from './pages/Admin/Subject/Create';
 import AdminTestsIndex from './pages/Admin/Test/Index';
+import AdminTestsId from './pages/Admin/Test/Id';
 import Layout from './layouts/Main';
 import 'vuetify/dist/vuetify.css';
 
@@ -39,6 +40,9 @@ import store from './store/main';
 const routes = [
     {
         path: '/admin/test/index', component: AdminTestsIndex
+    },
+    {
+        path: '/admin/test/:id', component: AdminTestsId
     },
     {
         path: '/admin/test/create', component: AdminTestCreate
