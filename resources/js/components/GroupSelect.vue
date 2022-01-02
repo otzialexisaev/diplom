@@ -2,7 +2,7 @@
     <v-select
         @change="$emit('input', $event)"
         :items="groups"
-        item-text="text"
+        item-text="title"
         item-value="id"
         label="Группа"
         :value="this.$attrs.value"

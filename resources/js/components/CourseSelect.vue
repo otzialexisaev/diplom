@@ -11,10 +11,10 @@
 <script>
 export default {
     name: "CourseSelect",
-    props: ['value'],
+    props: ['valuea'],
     data() {
         return {
-            valueData: this.$props.value
+            valueData: this.$props.valuea
         }
     }
 }

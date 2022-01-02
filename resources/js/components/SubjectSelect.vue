@@ -6,6 +6,7 @@
         item-text="text"
         item-value="id"
         label="Предмет"
+        :value="this.$attrs.value"
     ></v-select>
 </template>
 

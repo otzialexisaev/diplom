@@ -42,10 +42,10 @@ const routes = [
         path: '/admin/test/index', component: AdminTestsIndex
     },
     {
-        path: '/admin/test/:id', component: AdminTestsId
+        path: '/admin/test/create', component: AdminTestCreate
     },
     {
-        path: '/admin/test/create', component: AdminTestCreate
+        path: '/admin/test/:id', component: AdminTestsId
     },
     {
         path: '/admin/material/create', component: AdminMaterialCreate
