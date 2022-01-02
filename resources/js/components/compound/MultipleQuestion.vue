@@ -28,71 +28,17 @@ import InsertQuestion from "@/components/InsertQuestion";
 import InsertItems from "@/components/InsertItems";
 import SubjectSelect from "@/components/SubjectSelect";
 import MaterialSelect from "@/components/MaterialSelect";
+import QuestionsMixin from "@/mixins/QuestionsMixin";
 
 export default {
     name: "MultipleQuestion",
+    mixins: [QuestionsMixin],
     components: {InsertQuestion, InsertItems, SubjectSelect, MaterialSelect},
-    props: {
-        data: {
-            type: Object,
-            default: function () {
-                return {
-                    items: [],
-                    description: '',
-                    correctAnswer: null,
-                    // todo to make this work with value, pass value to subject select
-                    subject_id: null
-                }
-            }
-        },
-        index: Number
-    },
-    computed: {
-        selectItems: function () {
-            let items = [];
-            this.$data.items.forEach((value, index) => {
-                items.push({text: value, value: index});
-            });
-            return items;
-        }
-    },
     data() {
         return {
             choiceText: '',
             descriptionInput: '',
-            description: this.$props.data.description,
-            correctAnswer: this.$props.data.correctAnswer,
-            items: this.$props.data.items,
-            labelAddition: ' (несколько вариантов ответа)',
-            subject_id: this.$props.data.subject_id
-        }
-    },
-    methods: {
-        correctAnswerIndex: function (checkValue) {
-            let toReturn = null;
-            this.items.forEach((value, index) => {
-                if (value === checkValue) {
-                    toReturn = index;
-                }
-            });
-            this.correctAnswer = toReturn;
-            this.updateData();
-        },
-        addChoice: function () {
-            this.$data.items.push(this.choiceText);
-            this.choiceText = '';
-            this.updateData();
-        },
-        deleteSelf: function () {
-            this.$emit('delete');
-        },
-        updateData: function () {
-            this.$emit('update', {
-                items: this.$data.items,
-                subject_id: this.subject_id,
-                description: this.$data.description,
-                correctAnswer: this.correctAnswer
-            });
+            labelAddition: ' (несколько вариантов ответа)'
         }
     }
 }
