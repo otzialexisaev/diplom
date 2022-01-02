@@ -16,7 +16,7 @@
             ></v-select>
             <v-btn v-on:click="deleteSelf">Удалить</v-btn>
             <SubjectSelect class="mt-5" @input="subject_id = $event; updateData()"></SubjectSelect>
-            <MaterialSelect @input="$emit('materialInput', $event)"
+            <MaterialSelect @input="material_id = $event; updateData()"
                             :subject_id="this.$props.data.subject_id"></MaterialSelect>
         </InsertItems>
     </v-card>

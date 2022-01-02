@@ -5,6 +5,8 @@ namespace App\Models;
 /**
  * App\Models
  * @property int group_id
+ * @property string title
+ * @property string questions in json format
  */
 class Test extends Model
 {

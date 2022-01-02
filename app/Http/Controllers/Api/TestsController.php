@@ -11,10 +11,10 @@ class TestsController extends Controller
     {
         $data = request()->all();
         $model = new Test();
-        $model->group_id = $data->id;
-        $model->save();
-        var_dump($data);
-//        die();
-        return response()->json('asf');
+        $model->group_id = $data['group_id'];
+        $model->title = $data['title'];
+        $model->questions = json_encode($data['questions']);
+        $model->saveOrFail();
+        return response()->json($model);
     }
 }

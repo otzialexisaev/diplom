@@ -55,37 +55,37 @@ export default {
             // group_id: null,
             // title: null,
             questionTypeToAdd: null,
-            questions: [],
+            // questions: [],
             //////////// TESTING DATA ////////////
             course_id: 2,
             group_id: 3,
             title: 'Check title',
-            // questions: [
-            //     {
-            //         type: 1,
-            //         data: {
-            //             description: 'check single?',
-            //             items: [
-            //                 'choice 1',
-            //                 'choice 2',
-            //                 'choice 3'
-            //             ],
-            //             correctAnswer: 0
-            //         }
-            //     },
-            //     {
-            //         type: 2,
-            //         data: {
-            //             description: 'check multiple?',
-            //             items: [
-            //                 'choice 2.1',
-            //                 'choice 2.2',
-            //                 'choice 2.3'
-            //             ],
-            //             correctAnswer: [0, 2]
-            //         }
-            //     }
-            // ]
+            questions: [
+                {
+                    type: 1,
+                    data: {
+                        description: 'check single?',
+                        items: [
+                            'choice 1',
+                            'choice 2',
+                            'choice 3'
+                        ],
+                        correctAnswer: 0
+                    }
+                },
+                {
+                    type: 2,
+                    data: {
+                        description: 'check multiple?',
+                        items: [
+                            'choice 2.1',
+                            'choice 2.2',
+                            'choice 2.3'
+                        ],
+                        correctAnswer: [0, 2]
+                    }
+                }
+            ]
         }
     },
     mounted() {
@@ -109,7 +109,11 @@ export default {
         },
         save() {
             this.loading = true;
-            axios.post('/api/admin/test/store', this.$data).then((res) => {
+            axios.post('/api/admin/test/store', {
+                title: this.title,
+                group_id: this.group_id,
+                questions: this.questions
+            }).then((res) => {
                 console.log(res);
             });
         }
