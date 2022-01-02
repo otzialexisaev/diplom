@@ -7,6 +7,11 @@ use App\Models\Test;
 
 class TestsController extends Controller
 {
+    public function index()
+    {
+        return response()->json(Test::with('group')->get(['id', 'title', 'group_id']));
+    }
+
     public function store()
     {
         $data = request()->all();

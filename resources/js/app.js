@@ -27,6 +27,7 @@ import AdminTestCreate from './pages/Admin/Test/Create';
 import AdminMaterialCreate from './pages/Admin/Material/Create';
 import NotFound from './pages/NotFound';
 import AdminSubjectCreate from './pages/Admin/Subject/Create';
+import AdminTestsIndex from './pages/Admin/Test/Index';
 import Layout from './layouts/Main';
 import 'vuetify/dist/vuetify.css';
 
@@ -36,6 +37,9 @@ Vue.use(Vuetify);
 import store from './store/main';
 
 const routes = [
+    {
+        path: '/admin/test/index', component: AdminTestsIndex
+    },
     {
         path: '/admin/test/create', component: AdminTestCreate
     },

@@ -28,6 +28,7 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function() {
 });
 
 Route::prefix('/api')->group(function() {
+    Route::get('/admin/test/index', [\App\Http\Controllers\Api\TestsController::class, 'index']);
     Route::post('/admin/test/store', [\App\Http\Controllers\Api\TestsController::class, 'store']);
     Route::post('/admin/materials/store', [\App\Http\Controllers\Api\MaterialsController::class, 'store']);
     Route::post('/admin/subject/store', [\App\Http\Controllers\Api\SubjectsController::class, 'store']);

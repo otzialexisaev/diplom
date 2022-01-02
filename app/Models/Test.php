@@ -11,4 +11,9 @@ namespace App\Models;
 class Test extends Model
 {
     protected $table = 'tests';
+
+    public function group(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Group::class);
+    }
 }
