@@ -17,7 +17,7 @@ export default {
     },
     mounted() {
         this.loading = true;
-        axios.get('/api/test/index');
+        axios.get('/api/tests/index');
     }
 }
 </script>

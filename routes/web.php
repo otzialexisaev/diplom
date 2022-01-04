@@ -34,12 +34,12 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function() {
     });
 });
 
-Route::prefix('/api')->group(function() {
-    Route::get('/admin/groups', [\App\Http\Controllers\Api\ApiController::class, 'groups']);
-    Route::get('/admin/tests/index', [\App\Http\Controllers\Api\TestsController::class, 'index']);
-    Route::get('/admin/tests/{id}', [\App\Http\Controllers\Api\TestsController::class, 'show']);
-    Route::post('/admin/tests/store', [\App\Http\Controllers\Api\TestsController::class, 'store']);
-    Route::post('/admin/tests/update/{id}', [\App\Http\Controllers\Api\TestsController::class, 'update']);
-    Route::post('/admin/materials/store', [\App\Http\Controllers\Api\MaterialsController::class, 'store']);
-    Route::post('/admin/subjects/store', [\App\Http\Controllers\Api\SubjectsController::class, 'store']);
+Route::prefix('/api/admin/')->group(function() {
+    Route::get('groups', [\App\Http\Controllers\Api\Admin\ApiController::class, 'groups']);
+    Route::get('tests/index', [\App\Http\Controllers\Api\Admin\TestsController::class, 'index']);
+    Route::get('tests/{id}', [\App\Http\Controllers\Api\Admin\TestsController::class, 'show']);
+    Route::post('tests/store', [\App\Http\Controllers\Api\Admin\TestsController::class, 'store']);
+    Route::post('tests/update/{id}', [\App\Http\Controllers\Api\Admin\TestsController::class, 'update']);
+    Route::post('materials/store', [\App\Http\Controllers\Api\Admin\MaterialsController::class, 'store']);
+    Route::post('subjects/store', [\App\Http\Controllers\Api\Admin\SubjectsController::class, 'store']);
 });
