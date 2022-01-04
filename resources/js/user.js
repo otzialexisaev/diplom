@@ -26,6 +26,7 @@ import Vuetify from "vuetify";
 import Layout from './layouts/MainUserLayout';
 // pages
 import Index from './pages/User/Index';
+import TestsSolve from './pages/User/Tests/Solve/Id';
 import NotFound from './pages/NotFound';
 // !pages
 import 'vuetify/dist/vuetify.css';
@@ -38,6 +39,9 @@ import store from './store/main';
 const routes = [
     {
         path: '/user', component: Index, alias: '/user/index'
+    },
+    {
+        path: '/user/tests/solve/:id', component: TestsSolve
     },
     {
         path: '*', component: NotFound
@@ -58,7 +62,11 @@ const router = new VueRouter({
 const admin = new Vue({
     router,
     store,
-    vuetify: new Vuetify(),
+    vuetify: new Vuetify({
+        icons: {
+            iconfont: 'mdiSvg',
+        },
+    }),
     components: {Layout},
     template: '<v-app><Layout></Layout></v-app>'
 }).$mount('#vue');
