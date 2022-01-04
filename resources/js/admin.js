@@ -23,12 +23,12 @@ window.Vue = require('vue').default;
 
 import VueRouter from 'vue-router';
 import Vuetify from "vuetify";
-import AdminTestCreate from './pages/Admin/Test/Create';
-import AdminMaterialCreate from './pages/Admin/Material/Create';
+import AdminTestCreate from './pages/Admin/Tests/Create';
+import AdminMaterialCreate from './pages/Admin/Materials/Create';
 import NotFound from './pages/NotFound';
-import AdminSubjectCreate from './pages/Admin/Subject/Create';
-import AdminTestsIndex from './pages/Admin/Test/Index';
-import AdminTestsId from './pages/Admin/Test/Id';
+import AdminSubjectCreate from './pages/Admin/Subjects/Create';
+import AdminTestsIndex from './pages/Admin/Tests/Index';
+import AdminTestsId from './pages/Admin/Tests/Id';
 import Layout from './layouts/MainAdminLayout';
 import 'vuetify/dist/vuetify.css';
 
@@ -48,10 +48,10 @@ const routes = [
         path: '/admin/tests/:id', component: AdminTestsId
     },
     {
-        path: '/admin/material/create', component: AdminMaterialCreate
+        path: '/admin/materials/create', component: AdminMaterialCreate
     },
     {
-        path: '/admin/subject/create', component: AdminSubjectCreate
+        path: '/admin/subjects/create', component: AdminSubjectCreate
     },
     {
         path: '*', component: NotFound

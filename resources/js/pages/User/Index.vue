@@ -1,5 +1,5 @@
 <template>
-    <v-container v-for="">
+    <v-container>
         <v-card>
 
         </v-card>
