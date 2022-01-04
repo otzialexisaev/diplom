@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-container v-for="(item) in this.items" :key="item.id">
-            <v-card :href="'/admin/test/' + item.id">
+            <v-card :href="'/admin/tests/' + item.id">
                 <v-card-title>{{ item.title }}</v-card-title>
                 <v-card-text>Группа: {{ item.group.title }}; Курс {{ item.group.course }}</v-card-text>
             </v-card>
@@ -18,7 +18,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('/api/admin/test/index')
+        axios.get('/api/admin/tests/index')
             .then((res) => {
                 this.$data.items = res.data;
                 console.log(res.data);

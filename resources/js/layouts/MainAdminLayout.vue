@@ -6,28 +6,28 @@
             app
         >
             <v-list>
-                <v-list-item href="/admin/test/index">
+                <v-list-item href="/admin/tests/index">
                     <v-list-item-content>
                         <v-list-item-title>
                             Все тесты
                         </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-item href="/admin/test/create">
+                <v-list-item href="/admin/tests/create">
                     <v-list-item-content>
                         <v-list-item-title>
                             Создание теста
                         </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-item href="/admin/material/create">
+                <v-list-item href="/admin/materials/create">
                     <v-list-item-content>
                         <v-list-item-title>
                             Добавление материала
                         </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-item href="/admin/subject/create">
+                <v-list-item href="/admin/subjects/create">
                     <v-list-item-content>
                         <v-list-item-title>
                             Добавление предмета

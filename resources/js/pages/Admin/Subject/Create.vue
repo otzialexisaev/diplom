@@ -22,7 +22,7 @@ export default {
                 return;
             }
             this.loading = true;
-            axios.post('/api/admin/subject/store',
+            axios.post('/api/admin/subjects/store',
                 {title: this.title})
                 .then((res) => {
                     this.loading = false;

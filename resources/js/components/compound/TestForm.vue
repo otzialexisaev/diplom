@@ -95,7 +95,7 @@ export default {
             return;
         }
         this.loading = true;
-        axios.get('/api/admin/test/' + this.$props.id)
+        axios.get('/api/admin/tests/' + this.$props.id)
             .then((res) => {
                 this.group_id = res.data.group_id;
                 this.course_id = res.data.group.course;
@@ -122,16 +122,16 @@ export default {
         },
         save() {
             this.loading = true;
-            let url = '/api/admin/test/store';
+            let url = '/api/admin/tests/store';
             if (this.$props.id !== undefined) {
-                url = '/api/admin/test/update/' + this.$props.id;
+                url = '/api/admin/tests/update/' + this.$props.id;
             }
             axios.post(url, {
                 title: this.title,
                 group_id: this.group_id,
                 questions: this.questions
             }).then((res) => {
-                window.location.href = "/admin/test/" + res.data.id;
+                window.location.href = "/admin/tests/" + res.data.id;
             });
         }
     }

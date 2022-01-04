@@ -39,13 +39,13 @@ import store from './store/main';
 
 const routes = [
     {
-        path: '/admin/test/index', component: AdminTestsIndex
+        path: '/admin/tests/index', component: AdminTestsIndex
     },
     {
-        path: '/admin/test/create', component: AdminTestCreate
+        path: '/admin/tests/create', component: AdminTestCreate
     },
     {
-        path: '/admin/test/:id', component: AdminTestsId
+        path: '/admin/tests/:id', component: AdminTestsId
     },
     {
         path: '/admin/material/create', component: AdminMaterialCreate
