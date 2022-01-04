@@ -23,13 +23,11 @@ window.Vue = require('vue').default;
 
 import VueRouter from 'vue-router';
 import Vuetify from "vuetify";
-import AdminTestCreate from './pages/Admin/Test/Create';
-import AdminMaterialCreate from './pages/Admin/Material/Create';
-import NotFound from './pages/NotFound';
-import AdminSubjectCreate from './pages/Admin/Subject/Create';
-import AdminTestsIndex from './pages/Admin/Test/Index';
-import AdminTestsId from './pages/Admin/Test/Id';
 import Layout from './layouts/MainUserLayout';
+// pages
+import Index from './pages/User/Index';
+import NotFound from './pages/NotFound';
+// !pages
 import 'vuetify/dist/vuetify.css';
 
 Vue.use(VueRouter);
@@ -39,19 +37,7 @@ import store from './store/main';
 
 const routes = [
     {
-        path: '/admin/test/index', component: AdminTestsIndex
-    },
-    {
-        path: '/admin/test/create', component: AdminTestCreate
-    },
-    {
-        path: '/admin/test/:id', component: AdminTestsId
-    },
-    {
-        path: '/admin/material/create', component: AdminMaterialCreate
-    },
-    {
-        path: '/admin/subject/create', component: AdminSubjectCreate
+        path: '/user', component: Index, alias: '/user/index'
     },
     {
         path: '*', component: NotFound
@@ -74,5 +60,5 @@ const admin = new Vue({
     store,
     vuetify: new Vuetify(),
     components: {Layout},
-    template: '<v-app>useruser<Layout></Layout></v-app>'
+    template: '<v-app><Layout></Layout></v-app>'
 }).$mount('#vue');

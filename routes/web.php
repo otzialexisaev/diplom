@@ -24,6 +24,10 @@ Route::prefix('/user')->middleware(['auth'])->group(function() {
     });
 });
 
+Route::get('/user', function() {
+    return view('layouts.userVue');
+})->middleware(['auth']);
+
 Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function() {
     Route::fallback(function() {
         return view('layouts.adminVue');
