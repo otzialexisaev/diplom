@@ -3,20 +3,14 @@
         @change="$emit('input', $event)"
         :items="this.$store.state.const.courses"
         label="Курс"
-        :value="valueData"
+        :value="this.$attrs.value"
         dense
     ></v-select>
 </template>
 
 <script>
 export default {
-    name: "CourseSelect",
-    props: ['valuea'],
-    data() {
-        return {
-            valueData: this.$props.valuea
-        }
-    }
+    name: "CourseSelect"
 }
 </script>
 

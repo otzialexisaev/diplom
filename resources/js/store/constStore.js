@@ -53,7 +53,7 @@ export default {
             data.forEach((value) => {
                 state.courses.push({
                     text: value,
-                    value: value
+                    value: Number(value)
                 });
             });
             console.log(state.courses);

@@ -6,7 +6,7 @@
                 color="primary">
             </v-progress-circular>
         </v-overlay>
-        <CourseSelect :valuea="course_id"></CourseSelect>
+        <CourseSelect v-model="course_id"></CourseSelect>
         <GroupSelect v-if="course_id" v-bind:course_id="course_id" v-model="group_id"></GroupSelect>
         <v-text-field dense v-model="title" label="Введите наименование теста"></v-text-field>
         <div v-for="(question, index) in questions" class="mb-10">
