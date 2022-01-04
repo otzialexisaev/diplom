@@ -12,7 +12,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next, ...$guards)
     {
         if (!auth()->user()->isAdmin()) {
-            return response('', 403);
+            return redirect('/user/index');
         }
 
         return $next($request);
