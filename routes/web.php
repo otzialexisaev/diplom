@@ -20,13 +20,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('/user')->middleware(['auth'])->group(function() {
     Route::fallback(function() {
-        return view('layouts.onlyVue');
+        return view('layouts.userVue');
     });
 });
 
 Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function() {
     Route::fallback(function() {
-        return view('layouts.onlyVue');
+        return view('layouts.adminVue');
     });
 });
 

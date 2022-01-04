@@ -29,7 +29,7 @@ import NotFound from './pages/NotFound';
 import AdminSubjectCreate from './pages/Admin/Subject/Create';
 import AdminTestsIndex from './pages/Admin/Test/Index';
 import AdminTestsId from './pages/Admin/Test/Id';
-import Layout from './layouts/Main';
+import Layout from './layouts/MainUserLayout';
 import 'vuetify/dist/vuetify.css';
 
 Vue.use(VueRouter);
@@ -69,10 +69,10 @@ const router = new VueRouter({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+const admin = new Vue({
     router,
     store,
     vuetify: new Vuetify(),
     components: {Layout},
-    template: '<v-app><Layout></Layout></v-app>'
+    template: '<v-app>useruser<Layout></Layout></v-app>'
 }).$mount('#vue');

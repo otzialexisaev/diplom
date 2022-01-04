@@ -21,6 +21,9 @@ mix.webpackConfig({
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js('resources/js/admin.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
+
+mix.js('resources/js/user.js', 'public/js/user.js')
+    .vue();
