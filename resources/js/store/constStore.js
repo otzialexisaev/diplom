@@ -56,16 +56,26 @@ export default {
                     value: Number(value)
                 });
             });
-            console.log(state.courses);
+        },
+        setSubjects(state, data) {
+            state.subjects = data;
         }
     },
     actions: {
         async loadGroups(context) {
-            console.log(context);
             await axios.get('/api/admin/groups')
                 .then((res) => {
                     context.commit('setGroups', res.data);
                     context.commit('setCourses', Object.keys(context.state.groups));
+                });
+        },
+        async loadSubjects(context) {
+            await axios.get('/api/admin/subjects')
+                .then((res) => {
+                    context.commit('setSubjects', res.data);
+                })
+                .catch((res) => {
+                    console.log(res);
                 });
         }
     }

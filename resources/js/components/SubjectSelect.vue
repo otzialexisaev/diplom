@@ -3,7 +3,7 @@
         dense
         @change="$emit('input', $event)"
         :items="subjects"
-        item-text="text"
+        item-text="title"
         item-value="id"
         label="Предмет"
         :value="this.$attrs.value"
@@ -17,6 +17,9 @@ export default {
         subjects: function () {
             return this.$store.state.const.subjects;
         }
+    },
+    mounted() {
+        this.$store.dispatch('loadSubjects');
     }
 }
 </script>

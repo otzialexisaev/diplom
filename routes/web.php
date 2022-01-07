@@ -41,6 +41,7 @@ Route::prefix('/api/admin/')->group(function() {
     Route::post('tests/store', [\App\Http\Controllers\Api\Admin\TestsController::class, 'store']);
     Route::post('tests/update/{id}', [\App\Http\Controllers\Api\Admin\TestsController::class, 'update']);
     Route::post('materials/store', [\App\Http\Controllers\Api\Admin\MaterialsController::class, 'store']);
+    Route::get('subjects', [\App\Http\Controllers\Api\Admin\SubjectsController::class, 'index']);
     Route::post('subjects/store', [\App\Http\Controllers\Api\Admin\SubjectsController::class, 'store']);
 });
 
