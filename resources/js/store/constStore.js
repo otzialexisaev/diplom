@@ -5,35 +5,9 @@ export default {
             {value: 1, desc: 'Выбор одного ответа'},
             {value: 2, desc: 'Выбор нескольких ответов'},
         ],
-        groups: {
-            1:
-                [
-                    {text: '21ИСТв1', id: 1},
-                    {text: '21ИСТв2', id: 2}
-                ],
-            2:
-                [
-                    {text: '20ИСТв1', id: 3},
-                    {text: '20ИСТв2', id: 4}
-                ]
-        },
-        subjects: [
-            {id: 1, text: 'first'},
-            {id: 2, text: 'second'}
-        ],
-        materials:
-            {
-                1:
-                    [
-                        {title: 'Material 1', id: 1},
-                        {title: 'Material 2', id: 2}
-                    ],
-                2:
-                    [
-                        {title: 'Material 3', id: 3},
-                        {title: 'Material 4', id: 4}
-                    ]
-            }
+        groups: {},
+        subjects: [],
+        materials: {}
     },
     mutations: {
         setGroups(state, data) {
@@ -59,6 +33,21 @@ export default {
         },
         setSubjects(state, data) {
             state.subjects = data;
+        },
+        setMaterials(state, data) {
+            let materials = {};
+            data.forEach((material) => {
+                material.subjects.forEach((subject) => {
+                    if (typeof materials[subject.id] === 'undefined') {
+                        materials[subject.id] = [];
+                    }
+                    materials[subject.id].push({
+                        id: material.id,
+                        title: material.title
+                    });
+                });
+            });
+            state.materials = materials;
         }
     },
     actions: {
@@ -77,6 +66,13 @@ export default {
                 .catch((res) => {
                     console.log(res);
                 });
+        },
+        async loadMaterials(context) {
+            await axios.get('/api/admin/materials')
+                .then((res) => {
+                    context.commit('setMaterials', res.data);
+                })
+                .catch((res) => {console.log(res)});
         }
     }
 }

@@ -18,6 +18,9 @@ export default {
         materials: function () {
             return this.$store.state.const.materials[this.$props.subject_id];
         }
+    },
+    mounted() {
+        this.$store.dispatch('loadMaterials');
     }
 }
 </script>

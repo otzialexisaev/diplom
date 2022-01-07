@@ -10,6 +10,10 @@ use Throwable;
 
 class MaterialsController extends Controller
 {
+    public function index()
+    {
+        return response()->json(Material::with('subjects')->get());
+    }
     /**
      * @throws Throwable
      */
