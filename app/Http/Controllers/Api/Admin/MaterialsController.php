@@ -17,12 +17,12 @@ class MaterialsController extends Controller
     {
         $model = new Material();
         $model->title = $request->get('title');
-        $model->subject_id = $request->get('subject_id');
         $model->path = $request->file('file')->store('materials');
         if ($model->path === false) {
             return response()->json()->setStatusCode(500, "Couldn't save file");
         }
         $model->saveOrFail();
+        $model->subjects()->attach($request->get('subject_id'));
         return new MaterialResource($model);
     }
 }
