@@ -47,6 +47,6 @@ Route::prefix('/api/admin/')->group(function() {
 });
 
 Route::prefix('/api/')->group(function() {
-    Route::get('tests/{id}', [\App\Http\Controllers\Api\TestsController::class, 'getTest']);
     Route::get('tests/index', [\App\Http\Controllers\Api\TestsController::class, 'index']);
+    Route::get('tests/{id}', [\App\Http\Controllers\Api\TestsController::class, 'getTest']);
 });

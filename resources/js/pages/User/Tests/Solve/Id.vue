@@ -10,10 +10,19 @@
                         <v-radio v-for="(item, index) in question.data.items"
                                  :key="index"
                                  :label="item"
-                                 :value="item"
+                                 :value="index"
                                  color="primary"
                         ></v-radio>
                     </v-radio-group>
+                </v-container>
+                <v-container v-if="question.type === 2">
+                    <v-checkbox
+                        v-for="(item, index) in question.data.items"
+                        :key="index"
+                        v-model="answers[qIndex]"
+                        :value="index"
+                        :label="item"
+                    ></v-checkbox>
                 </v-container>
             </v-card-text>
         </v-card>
