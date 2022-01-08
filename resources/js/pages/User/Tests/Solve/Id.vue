@@ -26,6 +26,7 @@
                 </v-container>
             </v-card-text>
         </v-card>
+        <v-btn @click="send">Отправить решение</v-btn>
     </div>
 </template>
 
@@ -37,7 +38,25 @@ export default {
             id: null,
             questions: [],
             title: '',
-            answers: []
+            answers: [],
+            loading: false
+        }
+    },
+    methods: {
+        send() {
+            this.loading = true;
+            axios.post('/api/tests/solve/' + this.$route.params.id, {
+                answers: this.$data.answers
+            })
+                .then((res) => {
+                    console.log(res);
+                    this.loading = false;
+                    window.location.href = "/user/tests/solves/" + res.data.id;
+                })
+                .catch((res) => {
+                    console.log(res);
+                    this.loading = false;
+                });
         }
     },
     mounted() {
