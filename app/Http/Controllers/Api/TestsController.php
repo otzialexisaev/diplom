@@ -44,6 +44,8 @@ class TestsController extends Controller
             if (is_array($question['data']['correct'])) {
                 sort($question['data']['correct']);
             }
+            $data['questions'][$index]['description'] = $question['data']['description'];
+            $data['questions'][$index]['type'] = $question['type'];
             $data['questions'][$index]['items'] = $question['data']['items'];
             $data['questions'][$index]['correct'] = $question['data']['correct'];
             $data['questions'][$index]['answers'] = $solve['data'][$index];
