@@ -8,7 +8,7 @@ export default {
                 return {
                     items: [],
                     description: '',
-                    correctAnswer: null,
+                    correct: null,
                     // todo to make this work with value, pass value to subject select
                     subject_id: null,
                     material_id: null
@@ -29,7 +29,7 @@ export default {
     data() {
         return {
             description: this.$props.data.description,
-            correctAnswer: this.$props.data.correctAnswer,
+            correct: this.$props.data.correct,
             items: this.$props.data.items,
             subject_id: this.$props.data.subject_id,
             material_id: this.$props.data.material_id,
@@ -50,7 +50,7 @@ export default {
                 subject_id: this.subject_id,
                 material_id: this.material_id,
                 description: this.$data.description,
-                correctAnswer: this.correctAnswer
+                correct: this.correct
             });
         }
     }

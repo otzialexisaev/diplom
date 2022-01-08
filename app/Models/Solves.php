@@ -13,4 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 class Solves extends Model
 {
     use HasFactory;
+
+    public function test()
+    {
+        return $this->belongsTo(Test::class);
+    }
 }

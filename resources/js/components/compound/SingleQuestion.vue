@@ -11,8 +11,8 @@
                 v-if="this.selectItems.length > 0"
                 label="Выберите правильный ответ"
                 :items="this.selectItems"
-                :value="correctAnswer"
-                @change="(value) => {this.correctAnswer = value; this.updateData()}"
+                :value="correct"
+                @change="(value) => {this.correct = value; this.updateData()}"
             ></v-select>
             <v-btn v-on:click="deleteSelf">Удалить</v-btn>
             <SubjectSelect class="mt-5" :value="subject_id" @input="subject_id = $event; updateData()"></SubjectSelect>

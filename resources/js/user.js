@@ -27,6 +27,7 @@ import Layout from './layouts/MainUserLayout';
 // pages
 import Index from './pages/User/Index';
 import TestsSolve from './pages/User/Tests/Solve/Id';
+import TestsSolves from './pages/User/Tests/Solves/Id';
 import NotFound from './pages/NotFound';
 // !pages
 import 'vuetify/dist/vuetify.css';
@@ -42,6 +43,9 @@ const routes = [
     },
     {
         path: '/user/tests/solve/:id', component: TestsSolve
+    },
+    {
+        path: '/user/tests/solves/:id', component: TestsSolves
     },
     {
         path: '*', component: NotFound

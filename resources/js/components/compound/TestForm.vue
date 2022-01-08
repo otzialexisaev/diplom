@@ -70,7 +70,7 @@ export default {
             //                 'choice 2',
             //                 'choice 3'
             //             ],
-            //             correctAnswer: 0
+            //             correct: 0
             //         }
             //     },
             //     {
@@ -82,7 +82,7 @@ export default {
             //                 'choice 2.2',
             //                 'choice 2.3'
             //             ],
-            //             correctAnswer: [0, 2]
+            //             correct: [0, 2]
             //         }
             //     }
             // ]
