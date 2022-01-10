@@ -51,4 +51,5 @@ Route::prefix('/api/')->group(function() {
     Route::post('tests/solve/{id}', [\App\Http\Controllers\Api\TestsController::class, 'solve']);
     Route::get('tests/solves/{id}', [\App\Http\Controllers\Api\TestsController::class, 'solves']);
     Route::get('tests/{id}', [\App\Http\Controllers\Api\TestsController::class, 'getTest']);
+    Route::get('materials/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'downloadMaterial']);
 });

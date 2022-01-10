@@ -4,13 +4,14 @@
             <v-card class="flex-shrink-0" color="success" width="50" height="50"></v-card>
             <v-container class="text-center">- правильный ответ</v-container>
             <v-card class="flex-shrink-0" color="warning" width="50" height="50"></v-card>
-            <v-container class="text-center">- не выбранный правильный ответ</v-container>
+            <v-container class="text-center">- невыбранный правильный ответ</v-container>
             <v-card class="flex-shrink-0" color="error" width="50" height="50"></v-card>
             <v-container class="text-center">- неправильный ответ</v-container>
         </v-card>
         <div class="text-h5">{{ title }}</div>
         <v-card
             v-for="(question, index) in questions"
+            class="my-5"
             :key="index"
         >
             <v-card-title>{{ question.description }}</v-card-title>
@@ -23,6 +24,9 @@
                     {{ item }}
                 </v-container>
             </v-card-text>
+            <v-card-actions v-if="hasMistakes(question)">
+                <v-btn @click="downloadMaterial(question.material_id)">Скачать материал</v-btn>
+            </v-card-actions>
         </v-card>
     </v-container>
 </template>
@@ -44,6 +48,17 @@ export default {
             if (inCorrect) return 'warning';
             if (inAnswers) return 'error';
             return '';
+        },
+        downloadMaterial(material_id) {
+            window.location.href = '/api/materials/' + material_id;
+        },
+        hasMistakes(question) {
+            let res = false;
+            question.answers.forEach((answer, index) => {
+                if (!question.correct.includes(answer))
+                    res = true;
+            });
+            return res;
         }
     },
     async mounted() {

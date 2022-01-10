@@ -45,6 +45,7 @@ class TestsController extends Controller
                 sort($question['data']['correct']);
             }
             $data['questions'][$index]['description'] = $question['data']['description'];
+            $data['questions'][$index]['material_id'] = $question['data']['material_id'];
             $data['questions'][$index]['type'] = $question['type'];
             $data['questions'][$index]['items'] = $question['data']['items'];
             $data['questions'][$index]['correct'] = $question['data']['correct'];
