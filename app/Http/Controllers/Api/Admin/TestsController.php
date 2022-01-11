@@ -9,7 +9,7 @@ class TestsController extends Controller
 {
     public function index(): \Illuminate\Http\JsonResponse
     {
-        return response()->json(Test::with('group')->get(['id', 'title', 'group_id']));
+        return response()->json(Test::with('group')->get(['id', 'title', 'group_id', 'subject_id']));
     }
 
     public function show(int $id): \Illuminate\Http\JsonResponse
@@ -22,6 +22,7 @@ class TestsController extends Controller
         $data = request()->all();
         $model = new Test();
         $model->group_id = $data['group_id'];
+        $model->subject_id = $data['subject_id'];
         $model->title = $data['title'];
         $model->questions = json_encode($data['questions']);
         $model->saveOrFail();
@@ -33,6 +34,7 @@ class TestsController extends Controller
         $data = request()->all();
         $model = Test::find($id);
         $model->group_id = $data['group_id'];
+        $model->subject_id = $data['subject_id'];
         $model->title = $data['title'];
         $model->questions = json_encode($data['questions']);
         $model->saveOrFail();

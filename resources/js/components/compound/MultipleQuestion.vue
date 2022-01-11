@@ -16,10 +16,10 @@
                 @change="(value) => {this.correct = value; this.updateData()}"
             ></v-select>
             <v-btn v-on:click="deleteSelf">Удалить</v-btn>
-            <SubjectSelect class="mt-5" :value="subject_id" @input="subject_id = $event; updateData()"></SubjectSelect>
             <MaterialSelect @input="material_id = $event; updateData()"
                             :value="material_id"
-                            :subject_id="this.$props.data.subject_id"></MaterialSelect>
+                            class="mt-5"
+                            :subject_id="this.$props.subject_id"></MaterialSelect>
         </InsertItems>
     </v-card>
 </template>

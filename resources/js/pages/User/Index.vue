@@ -3,6 +3,7 @@
         <v-container v-for="item in items" :key="item.id">
             <v-card :href="'/user/tests/solve/' + item.id">
                 <v-card-title>{{ item.title }}</v-card-title>
+                <v-card-subtitle>Предмет: {{item.subject.title}}</v-card-subtitle>
             </v-card>
         </v-container>
     </div>

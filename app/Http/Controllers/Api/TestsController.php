@@ -13,7 +13,7 @@ class TestsController extends Controller
 {
     public function index(): \Illuminate\Http\JsonResponse
     {
-        return response()->json(Test::where('group_id', auth()->user()->group_id)->get(['id', 'title', 'group_id']));
+        return response()->json(Test::where('group_id', auth()->user()->group_id)->with('subject')->get());
     }
 
     /**
