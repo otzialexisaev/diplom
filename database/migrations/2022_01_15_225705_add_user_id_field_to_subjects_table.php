@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSubjectIdFieldToTestsTable extends Migration
+class AddUserIdFieldToSubjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddSubjectIdFieldToTestsTable extends Migration
      */
     public function up()
     {
-        Schema::table('tests', function (Blueprint $table) {
-            $table->foreignId('subject_id')->references('id')->on('subjects');
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->foreignId('user_id')->references('id')->on('users');
         });
     }
 
@@ -25,8 +25,8 @@ class AddSubjectIdFieldToTestsTable extends Migration
      */
     public function down()
     {
-        Schema::table('tests', function (Blueprint $table) {
-            $table->dropForeign(['subject_id']);
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
         });
     }
 }

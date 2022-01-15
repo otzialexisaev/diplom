@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property string title
+ * @property integer user_id
  */
 class Subject extends Model
 {

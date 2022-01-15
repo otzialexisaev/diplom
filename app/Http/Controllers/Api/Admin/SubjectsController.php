@@ -14,7 +14,7 @@ class SubjectsController extends Controller
      */
     public function index(): JsonResponse
     {
-        return response()->json(Subject::all());
+        return response()->json(Subject::where('user_id', '=', auth()->user()->id)->get());
     }
     /**
      * @throws Throwable
@@ -23,6 +23,7 @@ class SubjectsController extends Controller
     {
         $model = new Subject();
         $model->title = request()->get('title');
+        $model->user_id = auth()->user()->id;
         $model->saveOrFail();
     }
 }

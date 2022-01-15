@@ -35,8 +35,8 @@ class AddForeignKeyToMaterialSubjectTable extends Migration
     public function down()
     {
         Schema::table('material_subject', function (Blueprint $table) {
-            $table->dropForeign('material_id');
-            $table->dropForeign('subject_id');
+            $table->dropForeign(['material_id']);
+            $table->dropForeign(['subject_id']);
         });
     }
 }
