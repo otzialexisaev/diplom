@@ -13,7 +13,18 @@ class TestsController extends Controller
 {
     public function index(): \Illuminate\Http\JsonResponse
     {
-        return response()->json(Test::where('group_id', auth()->user()->group_id)->with('subject')->get());
+        $tests = Test::where('group_id', auth()->user()->group_id)->with('subject')->get()->toArray();
+        $testsIds = data_get($tests, '*.id');
+        $solves = Solves::whereIn('test_id', $testsIds)->where('user_id', '=', auth()->user()->id)->get('test_id');
+        $testsSolvesIds = data_get($solves, '*.test_id');
+        foreach ($tests as &$test) {
+            if (in_array($test['id'], $testsSolvesIds)) {
+                $test['has_solves'] = true;
+            } else {
+                $test['has_solves'] = false;
+            }
+        }
+        return response()->json($tests);
     }
 
     /**
@@ -29,6 +40,12 @@ class TestsController extends Controller
         $model->data = json_encode(request()->get('answers'));
         $model->saveOrFail();
         return response()->json($model);
+    }
+
+    public function find(int $testId)
+    {
+        $solve = Solves::where('test_id', '=', $testId)->where('user_id', '=', auth()->user()->id)->get()->last();
+        return response()->json($solve->id);
     }
 
     public function solves(int $id)

@@ -3,7 +3,10 @@
         <v-container v-for="item in items" :key="item.id">
             <v-card :href="'/user/tests/solve/' + item.id">
                 <v-card-title>{{ item.title }}</v-card-title>
-                <v-card-subtitle>Предмет: {{item.subject.title}}</v-card-subtitle>
+                <v-card-subtitle>Предмет: {{ item.subject.title }}</v-card-subtitle>
+                <v-card-actions v-if="item.has_solves">
+                    <v-btn @click.prevent="goToSolves(item.id)">Просмотреть последнее решение</v-btn>
+                </v-card-actions>
             </v-card>
         </v-container>
     </div>
@@ -16,6 +19,17 @@ export default {
         return {
             items: [],
             loading: false,
+        }
+    },
+    methods: {
+        goToSolves(testId) {
+            axios.get('/api/tests/solves/find/' + testId)
+                .then((res) => {
+                    window.location.href = '/user/tests/solves/' + res.data;
+                })
+                .catch((res) => {
+                    console.log(res);
+                });
         }
     },
     mounted() {
