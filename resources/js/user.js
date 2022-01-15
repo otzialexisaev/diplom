@@ -39,6 +39,9 @@ import store from './store/main';
 
 const routes = [
     {
+        path: '/', component: Index
+    },
+    {
         path: '/user', component: Index, alias: '/user/index'
     },
     {

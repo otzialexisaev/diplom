@@ -39,6 +39,9 @@ import store from './store/main';
 
 const routes = [
     {
+        path: '/', component: AdminTestsIndex
+    },
+    {
         path: '/admin/tests/index', component: AdminTestsIndex
     },
     {

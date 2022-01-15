@@ -16,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function() {
+    if (auth()->user()->isAdmin()) {
+        return view('layouts.adminVue');
+    }
+    return view('layouts.userVue');
+})->middleware(['auth']);
 
 Route::prefix('/user')->middleware(['auth'])->group(function() {
     Route::fallback(function() {
