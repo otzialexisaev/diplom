@@ -12,7 +12,7 @@ class SubjectsController extends Controller
     /**
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function getAll(): JsonResponse
     {
         return response()->json(Subject::where('user_id', '=', auth()->user()->id)->get());
     }

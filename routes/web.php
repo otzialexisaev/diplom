@@ -40,22 +40,22 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function() {
 });
 
 Route::prefix('/api/admin/')->group(function() {
-    Route::get('groups', [\App\Http\Controllers\Api\Admin\ApiController::class, 'groups']);
-    Route::get('tests/index', [\App\Http\Controllers\Api\Admin\TestsController::class, 'index']);
-    Route::get('tests/{id}', [\App\Http\Controllers\Api\Admin\TestsController::class, 'show']);
+    Route::get('groups', [\App\Http\Controllers\Api\Admin\GroupsController::class, 'index']);
+    Route::get('tests/getAll', [\App\Http\Controllers\Api\Admin\TestsController::class, 'getAll']);
+    Route::get('tests/get/{id}', [\App\Http\Controllers\Api\Admin\TestsController::class, 'get']);
     Route::post('tests/store', [\App\Http\Controllers\Api\Admin\TestsController::class, 'store']);
     Route::post('tests/update/{id}', [\App\Http\Controllers\Api\Admin\TestsController::class, 'update']);
-    Route::get('materials', [\App\Http\Controllers\Api\Admin\MaterialsController::class, 'index']);
+    Route::get('materials/getAll', [\App\Http\Controllers\Api\Admin\MaterialsController::class, 'getAll']);
     Route::post('materials/store', [\App\Http\Controllers\Api\Admin\MaterialsController::class, 'store']);
-    Route::get('subjects', [\App\Http\Controllers\Api\Admin\SubjectsController::class, 'index']);
+    Route::get('subjects/getAll', [\App\Http\Controllers\Api\Admin\SubjectsController::class, 'getAll']);
     Route::post('subjects/store', [\App\Http\Controllers\Api\Admin\SubjectsController::class, 'store']);
 });
 
 Route::prefix('/api/')->group(function() {
-    Route::get('tests/index', [\App\Http\Controllers\Api\TestsController::class, 'index']);
-    Route::post('tests/solve/{id}', [\App\Http\Controllers\Api\TestsController::class, 'solve']);
-    Route::get('tests/solves/{id}', [\App\Http\Controllers\Api\TestsController::class, 'solves']);
-    Route::get('tests/solves/find/{id}', [\App\Http\Controllers\Api\TestsController::class, 'find']);
-    Route::get('tests/{id}', [\App\Http\Controllers\Api\TestsController::class, 'getTest']);
-    Route::get('materials/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'downloadMaterial']);
+    Route::get('tests/get/{id}', [\App\Http\Controllers\Api\TestsController::class, 'get']);
+    Route::get('tests/getAll', [\App\Http\Controllers\Api\TestsController::class, 'getAll']);
+    Route::get('solves/get/{id}', [\App\Http\Controllers\Api\SolvesController::class, 'get']);
+    Route::post('solves/store/{id}', [\App\Http\Controllers\Api\SolvesController::class, 'store']);
+    Route::get('solves/findByTestId/{id}', [\App\Http\Controllers\Api\SolvesController::class, 'findByTestId']);
+    Route::get('materials/download/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'download']);
 });

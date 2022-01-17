@@ -23,9 +23,9 @@ export default {
     },
     methods: {
         goToSolves(testId) {
-            axios.get('/api/tests/solves/find/' + testId)
+            axios.get('/api/solves/findByTestId/' + testId)
                 .then((res) => {
-                    window.location.href = '/user/tests/solves/' + res.data;
+                    window.location.href = '/user/solves/' + res.data;
                 })
                 .catch((res) => {
                     console.log(res);
@@ -34,7 +34,7 @@ export default {
     },
     mounted() {
         this.loading = true;
-        axios.get('/api/tests/index')
+        axios.get('/api/tests/getAll')
             .then((res) => {
                 this.$data.items = res.data;
             })

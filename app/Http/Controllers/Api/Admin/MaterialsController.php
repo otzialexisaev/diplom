@@ -11,7 +11,7 @@ use Throwable;
 
 class MaterialsController extends Controller
 {
-    public function index()
+    public function getAll()
     {
         return response()->json(Material::with('subjects')->get());
     }

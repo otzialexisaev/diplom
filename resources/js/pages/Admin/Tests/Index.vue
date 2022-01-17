@@ -18,7 +18,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('/api/admin/tests/index')
+        axios.get('/api/admin/tests/getAll')
             .then((res) => {
                 this.$data.items = res.data;
                 console.log(res.data);

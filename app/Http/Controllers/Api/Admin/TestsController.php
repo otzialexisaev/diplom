@@ -7,12 +7,12 @@ use App\Models\Test;
 
 class TestsController extends Controller
 {
-    public function index(): \Illuminate\Http\JsonResponse
+    public function getAll(): \Illuminate\Http\JsonResponse
     {
         return response()->json(Test::with('group')->get(['id', 'title', 'group_id', 'subject_id']));
     }
 
-    public function show(int $id): \Illuminate\Http\JsonResponse
+    public function get(int $id): \Illuminate\Http\JsonResponse
     {
         return response()->json(Test::with('group')->where('id', $id)->first());
     }

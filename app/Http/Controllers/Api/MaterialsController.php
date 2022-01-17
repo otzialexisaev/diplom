@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class MaterialsController extends Controller
 {
-    public function downloadMaterial(int $id)
+    public function download(int $id): \Symfony\Component\HttpFoundation\StreamedResponse
     {
         $material = Material::where('id', $id)->get()->first();
         return Storage::disk('public')->download($material->path, $material->title);

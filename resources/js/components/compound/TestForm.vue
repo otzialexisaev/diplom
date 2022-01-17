@@ -101,7 +101,7 @@ export default {
             return;
         }
         this.loading = true;
-        axios.get('/api/admin/tests/' + this.$props.id)
+        axios.get('/api/admin/tests/get/' + this.$props.id)
             .then((res) => {
                 this.group_id = res.data.group_id;
                 this.course_id = res.data.group.course;

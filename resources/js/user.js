@@ -48,7 +48,7 @@ const routes = [
         path: '/user/tests/solve/:id', component: TestsSolve
     },
     {
-        path: '/user/tests/solves/:id', component: TestsSolves
+        path: '/user/solves/:id', component: TestsSolves
     },
     {
         path: '*', component: NotFound

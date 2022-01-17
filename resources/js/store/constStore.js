@@ -59,7 +59,7 @@ export default {
                 });
         },
         async loadSubjects(context) {
-            await axios.get('/api/admin/subjects')
+            await axios.get('/api/admin/subjects/getAll')
                 .then((res) => {
                     context.commit('setSubjects', res.data);
                 })
@@ -68,7 +68,7 @@ export default {
                 });
         },
         async loadMaterials(context) {
-            await axios.get('/api/admin/materials')
+            await axios.get('/api/admin/materials/getAll')
                 .then((res) => {
                     context.commit('setMaterials', res.data);
                 })

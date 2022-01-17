@@ -50,7 +50,7 @@ export default {
             return '';
         },
         downloadMaterial(material_id) {
-            window.location.href = '/api/materials/' + material_id;
+            window.location.href = '/api/materials/download/' + material_id;
         },
         hasMistakes(question) {
             let res = false;
@@ -62,7 +62,7 @@ export default {
         }
     },
     async mounted() {
-        await axios.get('/api/tests/solves/' + this.$route.params.id)
+        await axios.get('/api/solves/get/' + this.$route.params.id)
             .then((res) => {
                 this.$data.title = res.data.title;
                 let questions = res.data.questions;

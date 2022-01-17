@@ -45,13 +45,13 @@ export default {
     methods: {
         send() {
             this.loading = true;
-            axios.post('/api/tests/solve/' + this.$route.params.id, {
+            axios.post('/api/solves/store/' + this.$route.params.id, {
                 answers: this.$data.answers
             })
                 .then((res) => {
                     console.log(res);
                     this.loading = false;
-                    window.location.href = "/user/tests/solves/" + res.data.id;
+                    window.location.href = "/user/solves/" + res.data.id;
                 })
                 .catch((res) => {
                     console.log(res);
@@ -61,7 +61,7 @@ export default {
     },
     mounted() {
         this.loading = true;
-        axios.get('/api/tests/' + this.$route.params.id)
+        axios.get('/api/tests/get/' + this.$route.params.id)
             .then((res) => {
                 this.$data.id = res.data.id;
                 this.$data.title = res.data.title;
